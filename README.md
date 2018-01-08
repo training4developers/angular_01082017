@@ -19,11 +19,10 @@ Breaks:
 ## Course Outline
 
 - Day 1 - Angular CLI, Overview of Angular, Modules, Components, Services
-- Day 2 - Component Composition
-- Day 3 - Forms, Services
-- Day 4 - REST Services, Routing
-- Day 5 - Unit Testing, End-To-End Testing
-
+- Day 2 - Component Composition, Pipes
+- Day 3 - Template and Reactive Forms, Services, Dependency Injection
+- Day 4 - RxJS, REST Services, Routing
+- Day 5 - Attribute and Structural Directives, Unit Testing, End-To-End Testing
 
 ## Links
 
