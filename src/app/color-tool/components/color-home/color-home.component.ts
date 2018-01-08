@@ -7,7 +7,11 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ColorHomeComponent implements OnInit {
 
-  constructor() { }
+  public headerText = 'Color Tool';
+  public colors = [ 'blue', 'black', 'green', 'pink', 'maroon' ];
+
+  constructor() {
+  }
 
   ngOnInit() {
   }
