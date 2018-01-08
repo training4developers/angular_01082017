@@ -1,6 +1,26 @@
 <header>
   <h1>{{headerText}}</h1>
-  <ul>
-    <li *ngFor="let color of colors">{{color}}</li>
-  </ul>
 </header>
+Filter: <input type="text" [(ngModel)]="colorFilter">
+<br>Filter Value: {{colorFilter}}
+<ul>
+  <!-- <ng-template ngFor [ngForOf]="colors" let-color let-index="index">
+    <li>{{index}} {{color.name}}</li>
+  </ng-template> -->
+  <li *ngFor="let color of filteredColors">
+    {{color.name}}
+  </li>
+</ul>
+<form>
+  <div>
+    <label for="color-name-input">Color Name:</label>
+    <input type="text" id="color-name-input"
+      name="colorNameInput" [(ngModel)]="colorName">
+  </div>
+  <div>
+    <label for="color-hexcode-input">HexCode:</label>
+    <input type="text" id="color-hexcode-input"
+      name="colorHexCodeInput" [(ngModel)]="colorHexCode">
+  </div>
+  <button type="button" (click)="addColor()">Add Color</button>
+</form>

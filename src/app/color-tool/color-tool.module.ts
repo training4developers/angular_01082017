@@ -1,12 +1,14 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { ColorHomeComponent } from './components/color-home/color-home.component';
+import { FormsModule } from '@angular/forms';
+
+import { ColorHomeComponent, OldFilterPipe } from './components/color-home/color-home.component';
 
 @NgModule({
   imports: [
-    CommonModule
+    CommonModule, FormsModule,
   ],
-  declarations: [ColorHomeComponent],
+  declarations: [ColorHomeComponent, OldFilterPipe],
   exports: [ColorHomeComponent],
 })
 export class ColorToolModule { }
