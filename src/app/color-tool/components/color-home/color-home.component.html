@@ -1,16 +1,16 @@
-<header>
-  <h1>{{headerText}}</h1>
-</header>
-Filter: <input type="text" [(ngModel)]="colorFilter">
-<br>Filter Value: {{colorFilter}}
-<ul>
-  <!-- <ng-template ngFor [ngForOf]="colors" let-color let-index="index">
-    <li>{{index}} {{color.name}}</li>
-  </ng-template> -->
-  <li *ngFor="let color of filteredColors">
-    {{color.name}}
-  </li>
-</ul>
+<tool-header [headerText]="header"></tool-header>
+<div>
+  Filter: <input type="text" [(ngModel)]="colorFilter">
+  <br>Filter Value: {{colorFilter}}
+  <ul>
+    <!-- <ng-template ngFor [ngForOf]="colors" let-color let-index="index">
+      <li>{{index}} {{color.name}}</li>
+    </ng-template> -->
+    <li *ngFor="let color of filteredColors">
+      {{color.name}}
+    </li>
+  </ul>
+</div>
 <form>
   <div>
     <label for="color-name-input">Color Name:</label>

@@ -24,7 +24,7 @@ export class OldFilterPipe implements PipeTransform {
 })
 export class ColorHomeComponent implements OnInit, DoCheck {
 
-  public headerText = 'Color Tool';
+  public header = 'Color Tool';
   public colors: Color[] = [
     { id: 1, name: 'blue', hexCode: '' },
     { id: 2, name: 'black', hexCode: '' },
