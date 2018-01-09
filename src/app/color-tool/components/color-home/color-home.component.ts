@@ -48,13 +48,13 @@ export class ColorHomeComponent implements OnInit, DoCheck {
     }
 
     if (!this.filteredColorCache[this.colorFilter]) {
-      console.log('running color filter');
+      // console.log('running color filter');
       this.filteredColorCache[this.colorFilter] = this.colors.filter(value =>
         value.name.startsWith(this.colorFilter)
       );
     }
 
-    console.log('getting color filter cache');
+    // console.log('getting color filter cache');
 
     return this.filteredColorCache[this.colorFilter];
   }
@@ -66,7 +66,7 @@ export class ColorHomeComponent implements OnInit, DoCheck {
   }
 
   ngDoCheck() {
-    console.log('change detection has executed');
+    // console.log('change detection has executed');
   }
 
   addColor() {
