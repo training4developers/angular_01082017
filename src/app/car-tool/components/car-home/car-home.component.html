@@ -1,6 +1,30 @@
 <header>
   <h1>{{headerText}}</h1>
 </header>
+<form>
+  <div>
+    <label for="filter-value-input">Filter:</label>
+    <select [(ngModel)]="filterField" name="filterFieldSelect">
+      <option
+        *ngFor="let filterOption of filterOptions"
+        [value]="filterOption.value">
+          {{filterOption.label}}
+      </option>
+    </select>
+    <input type="text" id="filter-value-input"
+      name="filterValueInput" [(ngModel)]="filterValue">
+  </div>
+  <div>
+    <label for="sort-field-select">Sort:</label>
+    <select [(ngModel)]="sortField" id="sort-field-select" name="sortFieldSelect">
+        <option
+        *ngFor="let sortOption of sortOptions"
+        [value]="sortOption.value">
+          {{sortOption.label}}
+      </option>
+    </select>
+  </div>
+</form>
 <table>
   <thead>
     <tr>
@@ -12,7 +36,7 @@
     </tr>
   </thead>
   <tbody>
-    <tr *ngFor="let car of cars">
+    <tr *ngFor="let car of sortedCars">
       <td>{{car.make}}</td>
       <td>{{car.model}}</td>
       <td>{{car.year}}</td>
