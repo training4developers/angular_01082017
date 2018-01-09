@@ -69,12 +69,12 @@ export class ColorHomeComponent implements OnInit, DoCheck {
     // console.log('change detection has executed');
   }
 
-  addColor() {
-    this.colors = this.colors.concat({
-      id: Math.max(...this.colors.map(c => c.id)) + 1,
-      name: this.colorName,
-      hexCode: this.colorHexCode,
-    });
+  addColor(color: Color) {
+
+    // const color = Object.assign({}, newColor);
+    const newColor = { ...color };
+    newColor.id = Math.max(...this.colors.map(c => c.id)) + 1;
+    this.colors = this.colors.concat(newColor);
   }
 
 }
