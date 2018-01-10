@@ -1,16 +1,4 @@
-import { Component, Pipe, PipeTransform } from '@angular/core';
-
-@Pipe({
-  name: 'myFirst',
-})
-export class MyFirstPipe implements PipeTransform {
-
-  transform(value: any, strToAppend: any) {
-    return String(value).toUpperCase() + String(strToAppend);
-  }
-
-}
-
+import { Component } from '@angular/core';
 
 @Component({
   selector: 'app-root',
