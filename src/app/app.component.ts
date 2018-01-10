@@ -1,29 +1,30 @@
-import { Component, Pipe, PipeTransform } from '@angular/core';
-
-@Pipe({
-  name: 'myFirst',
-})
-export class MyFirstPipe implements PipeTransform {
-
-  transform(value: any, strToAppend: any) {
-    return String(value).toUpperCase() + String(strToAppend);
-  }
-
-}
-
+import { Component } from '@angular/core';
+import { FormControl, FormGroup, Validators, FormBuilder } from '@angular/forms';
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
-  styleUrls: ['./app.component.css']
+  styleUrls: ['./app.component.css'],
 })
 export class AppComponent {
-  title = 'app';
-  person = {
-    firstName: 'George',
-    lastName: 'Carlin',
-  };
-  colors = [ 'blue', 'red', 'green' ];
-  currencyType = 'INR';
-  amt = 1200000;
+
+  public contactForm: FormGroup;
+
+  // = new FormGroup({
+  //   phoneNumberInput: new FormControl('', [ Validators.required ]),
+  //   emailAddressInput: new FormControl(''),
+  // });
+
+  constructor(private fb: FormBuilder) {
+
+    this.contactForm = this.fb.group({
+      phoneNumberInput: [ '', Validators.required ],
+      emailAddressInput: [ '' ],
+    });
+  }
+
+  public showFormData() {
+    console.dir(this.contactForm);
+    console.dir(this.contactForm.value);
+  }
 }
