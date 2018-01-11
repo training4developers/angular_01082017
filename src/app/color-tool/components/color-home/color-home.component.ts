@@ -1,6 +1,5 @@
 import { Component } from '@angular/core';
 
-import { ColorsService } from '../../services/colors.service';
 import { Color } from '../../models/color';
 
 

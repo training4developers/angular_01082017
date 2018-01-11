@@ -1,6 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import { ReactiveFormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 import { ColorToolModule } from './color-tool/color-tool.module';
 import { CarToolModule } from './car-tool/car-tool.module';
@@ -9,14 +9,14 @@ import { MyFirstService } from './services/my-first.service';
 import { MySecondService } from './services/my-second.service';
 
 import { MyFirstPipe } from './pipes/my-first.pipe';
-import { AppComponent } from './app.component';
+import { AppComponent, PhoneNumberValidatorDirective } from './app.component';
 
 @NgModule({
   declarations: [
-    AppComponent, MyFirstPipe,
+    AppComponent, MyFirstPipe, PhoneNumberValidatorDirective,
   ],
   imports: [
-    BrowserModule, ReactiveFormsModule, ColorToolModule, CarToolModule,
+    BrowserModule, FormsModule, ReactiveFormsModule, ColorToolModule, CarToolModule,
   ],
   providers: [ MyFirstService, MySecondService ],
   bootstrap: [AppComponent]
