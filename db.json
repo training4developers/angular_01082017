@@ -1,7 +1,36 @@
 {
   "colors": [
-    { "id": 1, "name": "red", "hexCode": "#ff0000" },
-    { "id": 2, "name": "green", "hexCode": "#00ff00" },
-    { "id": 3, "name": "blue", "hexCode": "#0000ff" }
+    {
+      "id": 1,
+      "name": "red",
+      "hexCode": "#ff0000"
+    },
+    {
+      "id": 2,
+      "name": "green",
+      "hexCode": "#00ff00"
+    },
+    {
+      "id": 3,
+      "name": "blue",
+      "hexCode": "#0000ff"
+    }
+  ],
+  "students": [
+    {
+      "id": 1,
+      "name": "David",
+      "status": "tired"
+    },
+    {
+      "name": "Karthik",
+      "status": "active",
+      "id": 2
+    },
+    {
+      "name": "Karthik",
+      "status": "active",
+      "id": 3
+    }
   ]
 }

@@ -1,56 +1,48 @@
-import { Component, ViewEncapsulation, Directive } from '@angular/core';
-import {
-  FormControl, FormGroup, Validators, FormBuilder, AbstractControl,
-  NG_VALIDATORS,
-} from '@angular/forms';
+import { Component, InjectionToken, Inject, Injectable } from '@angular/core';
+import { HttpClient } from '@angular/common/http';
 
-const phoneNumberValidator = (control: AbstractControl) => {
+interface Color {
+  id: number;
+  name: string;
+  hexCode: string;
+}
 
-  if (control.value == null || String(control.value).length === 0) {
-    return null;
-  }
+const DataServiceToken = new InjectionToken<DataService>('data service');
 
-  const phoneNumberRegEx = new RegExp('^(\\+\\d{1,2}\\s)?\\(?\\d{3}\\)?[\\s.-]?\\d{3}[\\s.-]?\\d{4}$');
+interface DataService {
+  all();
+}
 
-  if (phoneNumberRegEx.test(control.value)) {
-    return null;
-  } else {
-    return {
-      format: true,
-    };
-  }
+@Injectable()
+class ColorsService implements DataService {
 
-};
+  constructor(private httpClient: HttpClient) { }
 
-@Directive({
-  selector: '[type=tel][ngModel]',
-  providers: [ { provide: NG_VALIDATORS, useValue: phoneNumberValidator, multi: true } ],
-})
-export class PhoneNumberValidatorDirective { }
+  all() {
+    return this.httpClient.get<Color[]>('http://localhost:3010/colors').toPromise();
+   }
+}
 
+const colorsServiceFactory = (httpClient: HttpClient) => {
+
+  return new ColorsService(httpClient);
+
+}
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css'],
-  encapsulation: ViewEncapsulation.Emulated,
+  providers: [ { provide: DataServiceToken, useFactory: colorsServiceFactory, deps: [ HttpClient ] } ],
 })
 export class AppComponent {
 
-  public contactForm: FormGroup;
+  constructor(@Inject(DataServiceToken) private dataSvc: DataService) {
 
-  public phoneNumber: string = '';
+    if (dataSvc) {
+      dataSvc.all().then( (colors: Color[]) => console.log(colors));
+    }
 
-  constructor(private fb: FormBuilder) {
-
-    this.contactForm = this.fb.group({
-      phoneNumberInput: [ '', { validators: [ Validators.required, phoneNumberValidator ] } ],
-      emailAddressInput: [ '' ],
-    });
   }
 
-  public showFormData() {
-    console.dir(this.contactForm);
-    console.dir(this.contactForm.value);
-  }
 }

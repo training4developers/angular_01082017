@@ -1,0 +1,22 @@
+<form [formGroup]="contactForm">
+  <div>
+    <span class="error-marker" *ngIf="contactForm.controls.phoneNumberInput.invalid && contactForm.controls.phoneNumberInput.touched">X</span>
+    <label for="phone-number-input">Phone Number:</label>
+    <input type="tel" id="phone-number-input" formControlName="phoneNumberInput">
+    <span>Phone number is required.</span>
+  </div>
+  <div>
+    <label for="email-address-input">Email Address:</label>
+    <input type="email" id="email-address-input" formControlName="emailAddressInput">
+  </div>
+  <button type="button" (click)="showFormData()">Show Form Data</button>
+</form>
+
+<form>
+  <div>
+    <label for="phone-number-input2">Phone Number:</label>
+    <input type="tel" id="phone-number-input2" required myMinLength="20"
+      name="phoneNumberInput2" [(ngModel)]="phoneNumber" #phoneNumberInput2="ngModel"  >
+    <span>{{phoneNumberInput2.errors | json}}</span>
+  </div>
+</form>
