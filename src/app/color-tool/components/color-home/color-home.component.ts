@@ -1,20 +1,7 @@
-import { Component, OnInit, DoCheck, Pipe, PipeTransform } from '@angular/core';
+import { Component } from '@angular/core';
 
+import { ColorsService } from '../../services/colors.service';
 import { Color } from '../../models/color';
-
-
-@Pipe({
-  name: 'oldFilter',
-  pure: false,
-})
-export class OldFilterPipe implements PipeTransform {
-
-  public transform(values: Color[], filterValue: string) {
-    console.log('OldFilterPipe executed');
-    return values.filter(value => value.name.startsWith(filterValue));
-  }
-
-}
 
 
 @Component({
@@ -22,15 +9,14 @@ export class OldFilterPipe implements PipeTransform {
   templateUrl: './color-home.component.html',
   styleUrls: ['./color-home.component.css']
 })
-export class ColorHomeComponent implements OnInit, DoCheck {
+export class ColorHomeComponent {
 
   public header = 'Color Tool';
+
   public colors: Color[] = [
-    { id: 1, name: 'blue', hexCode: '' },
-    { id: 2, name: 'black', hexCode: '' },
-    { id: 3, name: 'green', hexCode: '' },
-    { id: 4, name: 'pink', hexCode: '' },
-    { id: 5, name: 'maroon', hexCode: '' },
+    { 'id': 1, 'name': 'red', 'hexCode': '#ff0000' },
+    { 'id': 2, 'name': 'green', 'hexCode': '#00ff00' },
+    { 'id': 3, 'name': 'blue', 'hexCode': '#0000ff' }
   ];
 
   public colorFilter = '';
@@ -48,30 +34,16 @@ export class ColorHomeComponent implements OnInit, DoCheck {
     }
 
     if (!this.filteredColorCache[this.colorFilter]) {
-      // console.log('running color filter');
       this.filteredColorCache[this.colorFilter] = this.colors.filter(value =>
         value.name.startsWith(this.colorFilter)
       );
     }
 
-    // console.log('getting color filter cache');
-
     return this.filteredColorCache[this.colorFilter];
   }
 
-  constructor() {
-  }
+  public addColor(color: Color) {
 
-  ngOnInit() {
-  }
-
-  ngDoCheck() {
-    // console.log('change detection has executed');
-  }
-
-  addColor(color: Color) {
-
-    // const color = Object.assign({}, newColor);
     const newColor = { ...color };
     newColor.id = Math.max(...this.colors.map(c => c.id)) + 1;
     this.colors = this.colors.concat(newColor);

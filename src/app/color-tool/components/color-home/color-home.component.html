@@ -3,15 +3,6 @@
   Filter: <input type="text" [(ngModel)]="colorFilter">
   <br>Filter Value: {{colorFilter}}
   <ul>
-
-      <ng-template ngFor [ngForOf]="cars" let-car>
-        <tr view-row ngIf="car.id !== editRowId"></tr>
-        <tr edit-row ngIf="car.id === editRowId"></tr>
-      </ng-template>
-
-    <ng-template ngFor [ngForOf]="colors" let-color let-index="index">
-      <li>{{index}} {{color.name}}</li>
-    </ng-template>
     <li *ngFor="let color of filteredColors">
       {{color.name}}
     </li>

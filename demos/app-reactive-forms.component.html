@@ -1,9 +1,7 @@
 <form [formGroup]="contactForm">
   <div>
-    <span class="error-marker" *ngIf="contactForm.controls.phoneNumberInput.invalid && contactForm.controls.phoneNumberInput.touched">X</span>
     <label for="phone-number-input">Phone Number:</label>
     <input type="tel" id="phone-number-input" formControlName="phoneNumberInput">
-    <span>Phone number is required.</span>
   </div>
   <div>
     <label for="email-address-input">Email Address:</label>

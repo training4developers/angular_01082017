@@ -1,15 +1,19 @@
-import { Component, ViewEncapsulation } from '@angular/core';
+import { Component } from '@angular/core';
 import { FormControl, FormGroup, Validators, FormBuilder } from '@angular/forms';
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css'],
-  encapsulation: ViewEncapsulation.Emulated,
 })
 export class AppComponent {
 
   public contactForm: FormGroup;
+
+  // = new FormGroup({
+  //   phoneNumberInput: new FormControl('', [ Validators.required ]),
+  //   emailAddressInput: new FormControl(''),
+  // });
 
   constructor(private fb: FormBuilder) {
 
